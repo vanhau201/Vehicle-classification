@@ -67,8 +67,8 @@ def Predict(request):
             'date_created':datetime.datetime.now()
 
         })
-        # if serializer.is_valid():
-        #     serializer.save()
+        if serializer.is_valid():
+            serializer.save()
         
         # Reponse
         percent = {}
