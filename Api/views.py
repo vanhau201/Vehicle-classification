@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-import cv2
+from PIL import Image
 import base64
 import numpy as np
 import tensorflow as tf
@@ -11,6 +11,7 @@ from rest_framework import serializers, status
 from django.core.files.base import ContentFile
 from .models import Vehicle
 import datetime
+from io import BytesIO
 # Create your views here.
 
 model = tf.keras.models.load_model("./model_DL/model_xception_2.h5")
@@ -45,10 +46,14 @@ def Predict(request):
 
     try:
         string_base64 = request.data['base64']
-        img = base64_to_img(string_base64)
-
-        img = cv2.resize(img, (224, 224))
-        pre = model.predict(img.reshape(1, 224, 224, 3))
+        # img = base64_to_img(string_base64)
+        # img = cv2.resize(img, (224, 224))
+        img = Image.open(BytesIO(base64.b64decode(string_base64)))
+        img = img.resize((224,224))
+        img = np.array(img)
+        img = img.reshape(1, 224, 224, 3)
+        pre = model.predict(img)
+        # print(img.shape)
         list_percent = np.round(np.round(pre[0], 3)*100, 2)
         confidence = np.round(np.max(list_percent),2)
         result = labels[np.argmax(pre)]
@@ -67,8 +72,8 @@ def Predict(request):
             'date_created':datetime.datetime.now()
 
         })
-        if serializer.is_valid():
-            serializer.save()
+        # if serializer.is_valid():
+        #     serializer.save()
         
         # Reponse
         percent = {}
@@ -86,8 +91,8 @@ def Predict(request):
 
 
 # Hàm phụ trợ
-def base64_to_img(base64_data):
-    im_bytes = base64.b64decode(base64_data)
-    im_arr = np.frombuffer(im_bytes, dtype=np.uint8)
-    img = cv2.imdecode(im_arr, flags=cv2.IMREAD_COLOR)
-    return img
+# def base64_to_img(base64_data):
+#     im_bytes = base64.b64decode(base64_data)
+#     im_arr = np.frombuffer(im_bytes, dtype=np.uint8)
+#     img = cv2.imdecode(im_arr, flags=cv2.IMREAD_COLOR)
+#     return img
