@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-l1)q6mcx03r2=1vae$44u*r)7wkbb-l2%l_^0$p(u79n0j4q1n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost','*']
 
 
 # Application definition
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'Api',
     'rest_framework',
     'corsheaders',
-    'Fontend'
+    'Fontend',
 ]
 
 MIDDLEWARE = [
@@ -82,10 +82,17 @@ WSGI_APPLICATION = 'Vehicle_Classification.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Vehicle',
+        'USER': 'vanhau201',
+        'PASSWORD': 'Hau01654582330',
+        'HOST': 'mydb-postgres.cpsli3xa7bor.ap-southeast-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation
@@ -128,11 +135,10 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 if DEBUG:
     STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
+    os.path.join(BASE_DIR, 'static'),
+)
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -142,3 +148,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+# #AWS S3 SETUP
+# AWS_ACCESS_KEY_ID = 'AKIAVDLDBRWA2OCTUV4R'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'vehicle-bucket'
+
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None 
+
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

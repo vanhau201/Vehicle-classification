@@ -60,10 +60,12 @@
     }
 
     .btn_link:hover {
-        border-color: red;
+        color: rgb(32, 19, 19)
     }
 
-
+    .table{
+        margin: 0;
+    }
 
     .predict {
         margin-top: 40px;
@@ -104,18 +106,22 @@
     }
 
     .result {
-        margin-top: 20px;
+        margin-top: 15px;
         text-align: center;
     }
 
     .result p strong {
         color: red;
     }
+    .final{
+        font-weight: bold;
+        color: red;
+    }
 </style>
 
 <body>
     <div class="header">
-        <h3>Image Classification - Deep Learning Basic</h3>
+        <h3>Vehicle Classification - Deep Learning Basic</h3>
     </div>
     <div class="container">
 
@@ -257,7 +263,7 @@
                 method: "POST",
                 headers: {
                     'Content-type': 'application/json',
-                    // 'X-CSRFToken': csrftoken
+                    'X-CSRFToken': csrftoken
                 },
                 body: JSON.stringify({ "base64": base64 })
             }).then((respone) => respone.json())
@@ -272,8 +278,8 @@
                     for (var i in data.percent) {
                         if (i == data.result) {
                             myData += '<tr>' +
-                                '                <td class="text-center color" scope="row">' + data.percent[i].toFixed(1) + '%</td>' +
-                                '                <td class="text-center color">' + i + '</td>' +
+                                '                <td class="text-center final" scope="row">' + data.percent[i].toFixed(1) + '%</td>' +
+                                '                <td class="text-center final">' + i + '</td>' +
                                 '        </tr>';
                         }
                         else {
