@@ -85,10 +85,10 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Vehicle',
+        'NAME': 'vehicle',
         'USER': 'vanhau201',
         'PASSWORD': 'Hau01654582330',
-        'HOST': 'mydb-postgres.cpsli3xa7bor.ap-southeast-1.rds.amazonaws.com',
+        'HOST': 'mydb01.cpsli3xa7bor.ap-southeast-1.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -148,12 +148,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-# #AWS S3 SETUP
-# AWS_ACCESS_KEY_ID = 'AKIAVDLDBRWA2OCTUV4R'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'vehicle-bucket'
+#AWS S3 SETUP
+AWS_ACCESS_KEY_ID = 'AKIAVDLDBRWA2I3MMFH3'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'vehicle-bucket'
 
-# AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL = None 
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None 
 
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
