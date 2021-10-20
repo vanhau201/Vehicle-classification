@@ -87,8 +87,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'vehicle',
         'USER': 'vanhau201',
-        'PASSWORD': 'Hau01654582330',
-        'HOST': 'mydb01.cpsli3xa7bor.ap-southeast-1.rds.amazonaws.com',
+        'PASSWORD': '123456789',
+        'HOST': 'mydb.cpsli3xa7bor.ap-southeast-1.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -148,12 +148,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-#AWS S3 SETUP
-AWS_ACCESS_KEY_ID = 'AKIAVDLDBRWA2I3MMFH3'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'vehicle-bucket'
+# #AWS S3 SETUP
+AWS_ACCESS_KEY_ID = 'AKIAVDLDBRWA5P5RWL46'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'demo-gk'
 
 AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None 
-
+AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

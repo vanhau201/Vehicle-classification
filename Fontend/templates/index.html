@@ -258,7 +258,7 @@
     btnPredict.addEventListener("click", function (e) {
         e.preventDefault()
         if (base64 != undefined) {
-            url = "http://0.0.0.0:80/api/predict/"
+            url = "http://127.0.0.1:8000/api/predict/"
             fetch(url, {
                 method: "POST",
                 headers: {
