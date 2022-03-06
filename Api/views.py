@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from PIL import Image
@@ -72,8 +71,9 @@ def Predict(request):
             'date_created':datetime.datetime.now()
 
         })
-        if serializer.is_valid():
-            serializer.save()
+
+        # if serializer.is_valid():
+        #     serializer.save()
         
         # Reponse
         percent = {}
