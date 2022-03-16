@@ -33,14 +33,14 @@ def History(request):
 @api_view(['POST'])
 def Predict(request):
     labels = {
-        0: 'Xe đạp',
-        1: 'Xe xích lô',
-        2: 'Xe máy',
-        3: 'Xe ba gác',
-        4: 'Xe lam',
-        5: 'Xe hơi',
-        6: 'Xe tải',
-        7: 'Xe khách'
+        0: 'Bike',
+        1: 'Cyclo',
+        2: 'Motorcycle',
+        3: 'Tricycle',
+        4: 'Three-wheeled taxi',
+        5: 'Car',
+        6: 'Vans',
+        7: 'Bus'
     }
 
     try:
